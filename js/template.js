@@ -432,8 +432,16 @@ define([
       if (this.templateConfig.queryForWebmap) {
         // Use local webmap instead of portal webmap
         if (this.templateConfig.useLocalWebmap) {
-          // get webmap js file
-          require([this.templateConfig.localWebmapFile], lang.hitch(this, function (webmap) {
+          // get webmap
+          const token = localStorage.getItem("token");
+          fetch("http://localhost:8000/api/v1/arcgis/get_map/", {
+            headers: {
+              'Authorization': 'Token ' + token,
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(function (response) { return response.json() })
+          .then(lang.hitch(this, function (webmap) {
             // return webmap json
             cfg.itemInfo = webmap;
             this.itemConfig = cfg;
