@@ -434,7 +434,7 @@ define([
         if (this.templateConfig.useLocalWebmap) {
           // get webmap
           const token = localStorage.getItem("token");
-          fetch("http://localhost:8000/api/v1/arcgis/get_map/", {
+          fetch("http://localhost:8000/api/v1/arcgis/get_map/"+window.location.search, {
             headers: {
               'Authorization': 'Token ' + token,
               'Content-Type': 'application/json'
