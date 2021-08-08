@@ -40,16 +40,16 @@ define({
   "splashContent": null,
   "splashButtonText": null,
   "find": null,
-  "localize": true,
+  "localize": false,
   "units": null,
   // This is an option added so that developers working with the
   // hosted version of the application can apply custom styles
   // not used in the download version.
-  "customstyle": null, //'#mapDiv { background-color: #cfdfec; } .arcgisSearch .searchGroup .searchInput { border: 0px solid #BDBDBD; background-color: #fff!important; height: 27px; font-size: 16px; color: #333; } .esriIconZoom:before { color: white; } .arcgisSearch .searchBtn { border: 0px solid #57585A; rgba(0, 0, 0, 0.41); } #mapDiv_graphics_layer path { stroke: rgba(221, 0, 32, 1); stroke-width: 4px; opacity: 0.01; } .icon-menu:before { opacity: 0.01; } input#search_input:focus { outline: none; } .arcgisSearch .searchMenu { border: 0px solid #57585A; } .esriIconClose:before { color: white; } #panelLogo img { max-width: 80px; max-height: 68px; } #panelLogo { width: 81px; padding-top: 3px; } .titleButton.maximize:before { visibility: hidden!important; } .pageHeaderImg { display: none; } .pageTitle { display: none; } .arcgisSearch .hasMultipleSources .searchToggle { display: none!important; } #search_input::-webkit-input-placeholder { color: #3B3C3D; } #search_input::-moz-placeholder { color: #3B3C3D; } #search_input:-ms-input-placeholder { color: #3B3C3D; } #panelTop { height: 79px!important; } #search > div > div.searchBtn.searchSubmit { height: 27px; } .arcgisSearch .searchIcon { line-height: 29px; } #panelSearch { margin: 10px 10px 10px 20px!important; } .esriIconClose:before { color: rgb(134, 134, 134); padding-right: 7px; } #panelTitle { border-bottom: none; } .no-search #panelLogo { width: 87px; padding-right: 19px; } .no-search #panelLogo img { max-width: 86px !important; } #panelText { max-width: 500px; }',
+  "customstyle": "body { margin: 0; color: rgba(0, 0, 0, 0.85); font-size: 14px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; font-variant: tabular-nums; line-height: 1.5715; background-color: #fff; } #panelText { display: none; } #panelSearch { margin: 5px; } #mapDiv_zoom_slider, #panelTop { box-shadow: 0px 1px 1px rgba(0,0,0,0.5); } input#search_input:focus { outline: none; }",
   //Theme defines the background color of the title area and tool dialog
   //Color defines the text color for the title and details. Note that
   //both these values must be specified as hex colors.
-  "customLayout": "default", // default, sidetools, menubar, rounded
+  "customLayout": "rounded", // default, sidetools, menubar, rounded
   "theme": "#1890ff",
   "color": "#fff",
   "iconColor": "#fff",
@@ -61,10 +61,10 @@ define({
   //Set of tools that will be added to the toolbar
   "tools": [{
     "name": "legend",
-    "enabled": false
+    "enabled": true
   }, {
     "name": "bookmarks",
-    "enabled": true
+    "enabled": false
   }, {
     "name": "layers",
     "enabled": true,
@@ -73,7 +73,7 @@ define({
     "opacityslider": true
   }, {
     "name": "basemap",
-    "enabled": true
+    "enabled": false
   }, {
     "name": "overview", // wcag - can't interact with map
     "enabled": false
@@ -86,16 +86,16 @@ define({
     "toolbar": false
   }, {
     "name": "print",
-    "enabled": true,
+    "enabled": false,
     "legend": false,
     "layouts": false,
     "format": "pdf"
   }, {
     "name": "details",
-    "enabled": true
+    "enabled": false
   }, {
     "name": "share",
-    "enabled": true,
+    "enabled": false,
     "embed": false
   }],
   //Set the active tool on the toolbar.

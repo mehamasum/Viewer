@@ -433,17 +433,24 @@ define([
         // Use local webmap instead of portal webmap
         if (this.templateConfig.useLocalWebmap) {
           // get webmap
-          const token = localStorage.getItem("token");
-          fetch("http://localhost:8000/api/v1/arcgis/get_map/"+window.location.search, {
+          const urlParams = new URLSearchParams(window.location.search);
+          const documentId = urlParams.get('document_id');
+          const reviewerToken = urlParams.get('token');
+          const authToken = localStorage.getItem("token");
+          const fetchUrl = "http://localhost:8000/api/v1/documents/" + documentId + "/" + (reviewerToken ? "?token="+reviewerToken : "");
+          fetch(fetchUrl, {
             headers: {
-              'Authorization': 'Token ' + token,
+              'Authorization': reviewerToken ? undefined : 'Token ' + authToken,
               'Content-Type': 'application/json'
             }
           })
           .then(function (response) { return response.json() })
-          .then(lang.hitch(this, function (webmap) {
+          .then(lang.hitch(this, function (webmapJson) {
             // return webmap json
-            cfg.itemInfo = webmap;
+            cfg.itemInfo = {
+              item: JSON.parse(webmapJson.map_item),
+              itemData: JSON.parse(webmapJson.map_item_data),
+            };
             this.itemConfig = cfg;
             deferred.resolve(cfg);
           }));
