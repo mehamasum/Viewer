@@ -73,7 +73,7 @@ define({
     "opacityslider": true
   }, {
     "name": "basemap",
-    "enabled": false
+    "enabled": true
   }, {
     "name": "overview", // wcag - can't interact with map
     "enabled": false
