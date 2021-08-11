@@ -437,7 +437,7 @@ define([
           const documentId = urlParams.get('document_id');
           const reviewerToken = urlParams.get('token');
           const authToken = localStorage.getItem("token");
-          const fetchUrl = "http://localhost:8000/api/v1/documents/" + documentId + "/" + (reviewerToken ? "?token="+reviewerToken : "");
+          const fetchUrl = "/api/v1/documents/" + documentId + "/" + (reviewerToken ? "?token="+reviewerToken : "");
           fetch(fetchUrl, {
             headers: {
               'Authorization': reviewerToken ? undefined : 'Token ' + authToken,
